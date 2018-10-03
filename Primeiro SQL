@@ -1,0 +1,66 @@
+create database una
+
+use database una
+
+create table aluno(
+	id int primary key,
+	nome varchar(30),
+	cpf varchar(11),
+	orientador int
+)
+
+create table orientador (
+	id int primary key,
+	nome varchar(30),
+	escolaridade varchar(30)
+)
+
+alter table aluno 
+	add foreign key (orientador)
+	references orientador(id)
+
+
+insert into orientador values (
+1, 'Rodrigo', 'Graduado')
+
+insert into orientador(nome, id, escolaridade)
+values ('Rosa', 2, 'Estudante')
+
+insert into orientador
+values(5, 'Gloria', 'Graduada'),
+	  (3, 'Iracema', 'Graduada'),
+	  (4, 'Jose', 'Formando')
+
+
+insert into aluno
+values (5, 'Josefina', '12345678900', 5)
+
+select aluno.nome as Orientado, orientador.nome as Professor from orientador
+join aluno
+on aluno.orientador = orientador.id
+order by orientado asc
+
+
+select * from aluno
+select count(id) from aluno
+
+update aluno set orientador = 1
+
+
+update aluno set orientador = (select id from orientador
+							  where nome = 'Rosa')
+
+							  select * from aluno
+
+							  
+
+							  
+
+							  
+
+
+
+
+
+
+	  
